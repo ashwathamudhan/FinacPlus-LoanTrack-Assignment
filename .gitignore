@@ -10,6 +10,26 @@ __pycache__/
 venv/
 .pytest_cache/
 
+
+# Dependencies and builds
+node_modules/
+dist/
+build/
+
+# Local database data
+pgdata/
+postgres-data/
+*.sqlite3
+
+# Local configuration
+.vscode/
+.idea/
+
+# Operating system
+
+.DS_Store
+Thumbs.db
+
 # JavaScript dependencies
 node_modules/
 dist/
