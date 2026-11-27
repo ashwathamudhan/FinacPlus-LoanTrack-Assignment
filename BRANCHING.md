@@ -33,3 +33,20 @@ Both must be annotated tags.
 ## Recommendation for a Five-Person Team
 
 Use a shared `develop` integration branch and separate feature branches for individual tasks. Protect `main` and `develop` with pull-request reviews and required checks where available. This helps team members work independently while keeping releases stable.
+
+### Branching Workflow Correction
+
+During the initial stages, feature branches were merged
+directly into main instead of develop.
+
+This caused develop to remain outdated and the database
+reliability feature branch to lack application files.
+
+The develop branch was synchronized with main through
+a pull request, and the existing feature branch was
+updated.
+
+Going forward, all feature branches are created from
+develop and merged back into develop through pull
+requests. Stable releases are promoted from develop
+to main.
