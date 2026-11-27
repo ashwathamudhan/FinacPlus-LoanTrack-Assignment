@@ -107,3 +107,97 @@ Do not invent troubleshooting incidents.
 ### Integration Status
 
 All three Docker images have been successfully built. Full application integration, service networking and persistent database storage will be configured and verified in Stage 5 using Docker Compose.
+
+## Stage 6 - Database and Reliability Testing
+
+### 6.1 Database Initialization
+
+- Migration file:
+- Seed file:
+- Number of seeded records:
+
+### 6.2 Database Connectivity
+
+Command and output:
+
+```text
+Paste actual output
+```
+
+### 6.3 Health and Readiness Checks
+
+- /healthz response:
+- /readyz response:
+
+### 6.4 Loan Creation Through UI
+
+- Borrower name: Reliability Test User
+- Loan amount: 750000
+- Property city: Chennai
+
+PostgreSQL verification:
+
+```text
+Paste actual SQL output
+```
+
+### 6.5 Database Failure Test
+
+Command: docker compose stop db
+
+- Health endpoint response:
+- Readiness endpoint response:
+
+### 6.6 Database Recovery Test
+
+Command: docker compose start db
+
+- Database status:
+- Readiness response:
+- Frontend recovery:
+
+### 6.7 Backend Startup Retry and Backoff
+
+Command: docker compose up -d --no-deps backend
+
+Backend retry and recovery logs:
+
+```text
+Paste actual retry and recovery logs
+```
+
+### 6.8 Database Persistence Test
+
+Commands:
+
+- docker compose down
+- docker compose up -d
+
+Before:
+
+```text
+Paste actual SQL output
+```
+
+After:
+
+```text
+Paste actual SQL output
+```
+
+### 6.9 Volume Removal Test
+
+Commands:
+
+- docker compose down -v
+- docker compose up -d
+
+Result:
+
+```text
+Paste actual SQL output
+```
+
+Conclusion:
+Describe whether the old records were removed and
+the original seed records were recreated.
