@@ -1,0 +1,13 @@
+
+.env
+.env.*
+
+.git/
+.gitignore
+
+*.log
+*.bak
+*.dump
+
+pgdata/
+data/
