@@ -51,3 +51,18 @@ Additional usage will be documented during later stages.
 **Learning outcomes:**
 
 Understood Docker build contexts, multi-stage builds, image tagging, container networking, port mapping, health checks, database initialization and basic container security.
+
+| Database reliability testing | ChatGPT | Suggested database failure and recovery commands | Executed and verified the commands locally |
+| Startup retry testing | ChatGPT | Suggested bypassing Compose dependencies | Verified actual backend retry and recovery logs |
+| Volume persistence testing | ChatGPT | Explained named volume behavior | Compared database records before and after container recreation |
+
+where AI was misleading !!
+
+During the earlier stages, feature branches were merged
+directly into main instead of develop. This caused the
+Stage 6 feature branch to lack the application files.
+
+The issue was identified when Docker Compose could not
+find its configuration file. The integration branch was
+synchronized, and the branching workflow was corrected
+before continuing.
