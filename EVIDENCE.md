@@ -264,3 +264,47 @@ PostgreSQL uses a single-replica Deployment with a PVC.
 The Recreate strategy avoids overlapping database instances
 during Deployment updates. Persistent storage allows data
 to survive Pod replacement.
+
+### Kubernetes - Backend Deployment
+
+#### Backend Pod and Service
+
+```bash
+kubectl get pods,svc -n loantrack
+```
+
+Output:
+Paste actual terminal output here.
+
+#### Database DNS Resolution
+
+```bash
+python -c "import socket; print(socket.gethostbyname('db'))"
+```
+
+Output:
+Paste actual output here.
+
+Fully qualified DNS name:
+db.loantrack.svc.cluster.local
+
+#### Database Connectivity
+
+Paste the TCP connectivity test command and actual output.
+
+#### Health and Readiness
+
+Paste the /healthz and /readyz test commands and outputs.
+
+#### Loans API
+
+Paste the API test command and actual response.
+
+#### Design Decision
+
+The backend uses a RollingUpdate strategy with
+maxSurge: 1 and maxUnavailable: 0.
+
+Liveness checks process health, while readiness checks
+database availability. A startup probe allows additional
+time for application initialization.
