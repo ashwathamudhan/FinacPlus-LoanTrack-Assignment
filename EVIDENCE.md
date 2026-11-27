@@ -201,3 +201,66 @@ Paste actual SQL output
 Conclusion:
 Describe whether the old records were removed and
 the original seed records were recreated.
+
+## Stage 8 - Kubernetes Configuration
+
+### Namespace, ConfigMap and Secret
+
+Commands:
+
+```bash
+kubectl get namespace loantrack
+kubectl get configmap,secret -n loantrack
+```
+
+Output:
+
+Paste actual terminal output here.
+
+### Security
+
+Database credentials are stored in a Kubernetes Secret.
+The actual secret.yaml is excluded from Git.
+Only secret.example.yaml with dummy values is committed.
+
+### Kubernetes - PostgreSQL Deployment
+
+#### Database Deployment and Pod
+
+```bash
+kubectl get deployment,pods -n loantrack
+```
+
+Output:
+Paste actual output here.
+
+#### Database Service
+
+```bash
+kubectl get svc -n loantrack
+```
+
+Output:
+Paste actual output here.
+
+#### Persistent Storage
+
+```bash
+kubectl get pvc -n loantrack
+kubectl get pv
+```
+
+Output:
+Paste actual output here.
+
+#### Database Initialization
+
+Paste relevant initialization logs and SELECT COUNT(\*)
+query output here.
+
+#### Design Decision
+
+PostgreSQL uses a single-replica Deployment with a PVC.
+The Recreate strategy avoids overlapping database instances
+during Deployment updates. Persistent storage allows data
+to survive Pod replacement.
