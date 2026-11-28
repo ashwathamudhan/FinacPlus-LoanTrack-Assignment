@@ -1,9 +1,22 @@
+# Stage 1: Prepare database initialization scripts
+FROM postgres:16-alpine AS builder
 
-FROM postgres:16-alpine
+WORKDIR /build
 
-COPY migrations/*.sql /docker-entrypoint-initdb.d/
+COPY migrations/*.sql ./migrations/
+COPY seed.sql ./999_seed.sql
 
-COPY seed.sql /docker-entrypoint-initdb.d/999_seed.sql
+
+# Stage 2: PostgreSQL runtime
+FROM postgres:16-alpine AS runtime
+
+COPY --from=builder --chown=postgres:postgres \
+    /build/migrations/ /docker-entrypoint-initdb.d/
+
+COPY --from=builder --chown=postgres:postgres \
+    /build/999_seed.sql /docker-entrypoint-initdb.d/999_seed.sql
+
+USER postgres
 
 EXPOSE 5432
 
